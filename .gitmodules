@@ -1,12 +1,12 @@
 [submodule "backend"]
 	path = backend
 	url = https://github.com/CS451-Gang/backend.git
-	branch = main
+	branch = dev
 [submodule "database"]
 	path = database
 	url = https://github.com/CS451-Gang/database.git
-	branch = main
+	branch = dev
 [submodule "frontend"]
 	path = frontend
 	url = https://github.com/CS451-Gang/frontend.git
-	branch = main
+	branch = dev
