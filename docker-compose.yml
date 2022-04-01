@@ -9,18 +9,23 @@ services:
     restart: always
     ports:
       - "8000:80"
+    depends_on:
+      database:
+        # database takes time to start, so we watch a health check
+        condition: service_healthy
   database:
     build: ./database
     restart: always
     ports:
-      - "33060:3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: "root"
-      MYSQL_DATABASE: "umkc-db"
-      MYSQL_USER: "umkc"
-      MYSQL_PASSWORD: "umkc"
+      - "3306:3306"
     volumes:
       - umkc-data:/var/lib/mysql
     tty: true
+    healthcheck:
+      test: ["CMD", "mysqladmin", "-u", "root", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
 volumes:
   umkc-data:
