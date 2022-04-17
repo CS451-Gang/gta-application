@@ -1,9 +1,4 @@
 services:
-  frontend:
-    build: ./frontend
-    restart: always
-    ports:
-      - "3000:3000"
   backend:
     build: ./backend
     restart: always
@@ -13,9 +8,10 @@ services:
       database:
         # database takes time to start, so we watch a health check
         condition: service_healthy
+
   database:
     build: ./database
-    restart: always
+    restart: "always"
     ports:
       - "3306:3306"
     volumes:
@@ -23,9 +19,15 @@ services:
     tty: true
     healthcheck:
       test: ["CMD", "mysqladmin", "-u", "root", "ping"]
-      interval: 10s
-      timeout: 5s
+      interval: 8s
+      timeout: 8s
       retries: 3
+
+  frontend:
+    build: ./frontend-experiments
+    restart: always
+    ports:
+      - "3000:3000"
 
 volumes:
   umkc-data:
