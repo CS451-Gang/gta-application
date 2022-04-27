@@ -23,11 +23,11 @@ services:
       timeout: 8s
       retries: 3
 
-  frontend:
-    build: ./frontend-experiments
-    restart: always
-    ports:
-      - "3000:3000"
+  # frontend:
+  #   build: ./frontend-experiments
+  #   restart: always
+  #   ports:
+  #     - "3000:3000"
 
 volumes:
   umkc-data:
