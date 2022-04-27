@@ -9,8 +9,4 @@
 [submodule "frontend"]
 	path = frontend
 	url = https://github.com/CS451-Gang/frontend.git
-	branch = dev
-[submodule "frontend-experiments"]
-	path = frontend-experiments
-	url = https://github.com/CS451-Gang/frontend-experiments.git
-	branch = main
+	branch = FrontEnd-Changes
