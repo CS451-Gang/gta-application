@@ -1,14 +1,4 @@
 services:
-  backend:
-    build: ./backend
-    restart: always
-    ports:
-      - "8000:80"
-    depends_on:
-      database:
-        # database takes time to start, so we watch a health check
-        condition: service_healthy
-
   database:
     build: ./database
     restart: "always"
@@ -16,6 +6,8 @@ services:
       - "3306:3306"
     volumes:
       - umkc-data:/var/lib/mysql
+    env_file:
+      - .env
     tty: true
     healthcheck:
       test: ["CMD", "mysqladmin", "-u", "root", "ping"]
