@@ -16,7 +16,7 @@ services:
       retries: 3
 
   # frontend:
-  #   build: ./frontend-experiments
+  #   build: ./frontend
   #   restart: always
   #   ports:
   #     - "3000:3000"
